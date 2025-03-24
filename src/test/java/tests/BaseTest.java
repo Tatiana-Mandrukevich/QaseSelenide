@@ -6,7 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import steps.LoginSteps;
+import org.testng.asserts.SoftAssert;
+import pages.ProjectSettingsPage;
+import pages.ProjectsListPage;
+import pages.TestCasePage;
+import steps.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,12 +20,27 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class BaseTest {
     protected LoginSteps loginSteps;
+    protected NewProjectModalSteps newProjectModalSteps;
+    protected ProjectRepositorySteps projectRepositorySteps;
+    protected ProjectSettingsPage projectSettingsPage;
+    protected DeleteProjectModalSteps deleteProjectModalSteps;
+    protected ProjectsListPage projectsListPage;
+    protected CreateTestCaseSteps createTestCaseSteps;
+    protected TestCasePage testCasePage;
     public static String USER = PropertyReader.getProperty("user");
     public static String PASSWORD = PropertyReader.getProperty("password");
     public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
+    SoftAssert softAssert = new SoftAssert();
 
     public void initPages() {
         loginSteps = new LoginSteps();
+        newProjectModalSteps = new NewProjectModalSteps();
+        projectRepositorySteps = new ProjectRepositorySteps();
+        projectSettingsPage = new ProjectSettingsPage();
+        deleteProjectModalSteps = new DeleteProjectModalSteps();
+        projectsListPage = new ProjectsListPage();
+        createTestCaseSteps = new CreateTestCaseSteps();
+        testCasePage = new TestCasePage();
     }
 
     @BeforeMethod
