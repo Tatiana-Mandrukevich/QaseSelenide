@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPage extends BasePage {
-    private static final SelenideElement SIGN_IN = $x("//*[@type='submit']");
+    private static final SelenideElement SIGN_IN_BUTTON = $x("//*[@type='submit']");
 
     public LoginPage() {
     }
@@ -20,15 +20,15 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage isOpened() {
-        SIGN_IN.shouldBe(Condition.visible);
+        SIGN_IN_BUTTON.shouldBe(Condition.visible);
         return this;
     }
 
     private LoginPage fillLoginForm(String email, String password) {
         isOpened();
-        new Input("email").write(email);
-        new Input("password").write(password);
-        new Button().click(SIGN_IN);
+        new Input("email").writeForLoginPage(email);
+        new Input("password").writeForLoginPage(password);
+        new Button().click(SIGN_IN_BUTTON);
         return this;
     }
 
