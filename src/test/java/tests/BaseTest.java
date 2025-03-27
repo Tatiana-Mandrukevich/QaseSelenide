@@ -27,6 +27,7 @@ public class BaseTest {
     protected ProjectsListPage projectsListPage;
     protected CreateTestCaseSteps createTestCaseSteps;
     protected TestCasePage testCasePage;
+    protected ProjectsListSteps projectsListSteps;
     public static String USER = PropertyReader.getProperty("user");
     public static String PASSWORD = PropertyReader.getProperty("password");
     public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
@@ -41,6 +42,7 @@ public class BaseTest {
         projectsListPage = new ProjectsListPage();
         createTestCaseSteps = new CreateTestCaseSteps();
         testCasePage = new TestCasePage();
+        projectsListSteps = new ProjectsListSteps();
     }
 
     @BeforeMethod
@@ -59,6 +61,16 @@ public class BaseTest {
         Configuration.browserSize = "1024x768";
 
         initPages();
+    }
+
+    @BeforeMethod(dependsOnMethods = "initTest")
+    public void deleteExistingTestProject() {
+        loginSteps.login(USER, PASSWORD, LOGIN_URL);
+        if (projectsListPage.isProjectPresent("Project name value")) {
+            projectsListSteps.openProject("Project name value");
+            projectRepositorySteps.openSettingsForProject();
+            deleteProjectModalSteps.deleteNewProject();
+        }
     }
 
     /**

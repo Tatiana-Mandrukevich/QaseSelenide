@@ -21,15 +21,15 @@ public class CreateTestCasePage extends ProjectRepositoryPage {
 
     public TestCasePage createTestCase(TestCase testCase) {
         new Input("title").write(testCase.getTitle());
-        new Dropdown("0-status").selectOptionFromDropdown(testCase.getStatus());
+        new Dropdown("Status").selectOptionFromDropdown(testCase.getStatus());
         new Input("Description").writeForTextareaForTestCase(testCase.getDescription());
-        new Dropdown("0-severity").selectOptionFromDropdown(testCase.getSeverity());
-        new Dropdown("0-priority").selectOptionFromDropdown(testCase.getPriority());
-        new Dropdown("0-type").selectOptionFromDropdown(testCase.getType());
-        new Dropdown("0-layer").selectOptionFromDropdown(testCase.getLayer());
-        new Dropdown("0-is_flaky").selectOptionFromDropdown(testCase.getIsFlaky());
-        new Dropdown("0-behavior").selectOptionFromDropdown(testCase.getBehavior());
-        new Dropdown("0-isManual").selectOptionFromDropdown(testCase.getAutomationStatus());
+        new Dropdown("Severity").selectOptionFromDropdown(testCase.getSeverity());
+        new Dropdown("Priority").selectOptionFromDropdown(testCase.getPriority());
+        new Dropdown("Type").selectOptionFromDropdown(testCase.getType());
+        new Dropdown("Layer").selectOptionFromDropdown(testCase.getLayer());
+        new Dropdown("Is flaky").selectOptionFromDropdown(testCase.getIsFlaky());
+        new Dropdown("Behavior").selectOptionFromDropdown(testCase.getBehavior());
+        new Dropdown("Automation status").selectOptionFromDropdown(testCase.getAutomationStatus());
         new Input("Pre-conditions").writeForTextareaForTestCase(testCase.getPreConditions());
         new Input("Post-conditions").writeForTextareaForTestCase(testCase.getPostConditions());
         new Button().click(ADD_STEP_BUTTON);

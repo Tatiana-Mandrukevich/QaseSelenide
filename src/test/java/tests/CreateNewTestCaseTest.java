@@ -9,7 +9,7 @@ public class CreateNewTestCaseTest extends BaseTest {
     @Test
     public void createNewTestCase() {
         Project project = new Project();
-        project.setProjectName("Project name value for test case");
+        project.setProjectName("Project name value");
         project.setProjectCode("CODEVALUE");
         project.setDescription("Description value");
 
@@ -30,13 +30,12 @@ public class CreateNewTestCaseTest extends BaseTest {
         testCase.setStepsData("Test case step data value");
         testCase.setStepsExpectedResult("Test case step expected result value");
 
-        loginSteps.login(USER, PASSWORD, LOGIN_URL);
         newProjectModalSteps.createNewProject(project);
         createTestCaseSteps.createNewTestCase(testCase);
         softAssert.assertEquals(testCasePage.getExistTestCaseTitleValue(), testCase.getTitle());
-        softAssert.assertEquals(testCasePage.getExistTestCaseGeneralValue("0-description"), testCase.getDescription());
-        softAssert.assertEquals(testCasePage.getExistTestCaseGeneralValue("0-preconditions"), testCase.getPreConditions());
-        softAssert.assertEquals(testCasePage.getExistTestCaseGeneralValue("0-postconditions"), testCase.getPostConditions());
+        softAssert.assertEquals(testCasePage.getExistTestCaseGeneralValue("Description"), testCase.getDescription());
+        softAssert.assertEquals(testCasePage.getExistTestCaseGeneralValue("Pre-conditions"), testCase.getPreConditions());
+        softAssert.assertEquals(testCasePage.getExistTestCaseGeneralValue("Post-conditions"), testCase.getPostConditions());
 
         testCasePage.openStep();
         softAssert.assertEquals(testCasePage.getExistTestCaseStepActionValue("1"), testCase.getStepsStepAction());
@@ -44,13 +43,13 @@ public class CreateNewTestCaseTest extends BaseTest {
         softAssert.assertEquals(testCasePage.getExistTestCaseStepValue("Expected result"), testCase.getStepsExpectedResult());
 
         testCasePage.openProperties();
-        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("0-severity"), testCase.getSeverity());
-        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("0-priority"), testCase.getPriority());
-        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("0-type"), testCase.getType());
-        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("0-layer"), testCase.getLayer());
-        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("0-is_flaky"), testCase.getIsFlaky());
-        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("0-behavior"), testCase.getBehavior());
-        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("0-isManual"), testCase.getAutomationStatus());
+        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("Severity"), testCase.getSeverity());
+        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("Priority"), testCase.getPriority());
+        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("Type"), testCase.getType());
+        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("Layer"), testCase.getLayer());
+        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("Is flaky"), testCase.getIsFlaky());
+        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("Behavior"), testCase.getBehavior());
+        softAssert.assertEquals(testCasePage.getExistTestCasePropertiesValue("Automation status"), testCase.getAutomationStatus());
 
         softAssert.assertAll();
 

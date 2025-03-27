@@ -17,6 +17,6 @@ public class LoginSteps extends BaseSteps {
         loginPage
                 .openLoginPage(url)
                 .login(email, password)
-                .isOpened();
+                .isOpened("Demo Project");
     }
 }

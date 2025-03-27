@@ -4,7 +4,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Dropdown {
     String label;
-    private static final String DROPDOWN_XPATH = "//*[@id='%s']";
+    private static final String DROPDOWN_XPATH = "//*[contains(text(), '%s')]/parent::div//*[@role='combobox']";
     private static final String DROPDOWN_OPTION_XPATH = "//*[text()='%s']";
 
     public Dropdown(String label) {

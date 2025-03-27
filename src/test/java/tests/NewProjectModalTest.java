@@ -12,7 +12,6 @@ public class NewProjectModalTest extends BaseTest {
         project.setProjectCode("CODEVALUE");
         project.setDescription("Description value");
 
-        loginSteps.login(USER, PASSWORD, LOGIN_URL);
         newProjectModalSteps.createNewProject(project);
         projectRepositorySteps.openSettingsForProject();
         softAssert.assertEquals(projectSettingsPage.getExistInputValue("project-name"), project.getProjectName());

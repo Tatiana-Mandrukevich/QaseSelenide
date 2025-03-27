@@ -18,6 +18,6 @@ public class DeleteProjectModalSteps extends BaseSteps {
         projectSettingsPage.clickDeleteProjectButton()
                 .isOpened()
                 .clickDeleteProjectButtonOnModalPage()
-                .isOpened();
+                .isOpened("Demo Project");
     }
 }

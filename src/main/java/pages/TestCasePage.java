@@ -11,10 +11,10 @@ public class TestCasePage extends ProjectRepositoryPage {
     private static final SelenideElement STEP_OPEN_BUTTON = $x("//*[@data-icon='angle-down']");
     private static final SelenideElement OPEN_PROPERTIES_BUTTON = $x("//button[text()='Properties']");
     private static final SelenideElement TEST_CASE_TITLE = $x("//*[@class='OZXFF4']");
-    private static final String  TEST_CASE_GENERAL_VALUE = "//*[@for='%s']/parent::*//p";
+    private static final String  TEST_CASE_GENERAL_VALUE = "//label[text()='%s']//ancestor::section//p";
     private static final String  TEST_CASE_STEP_ACTION_VALUE = "//*[@title='%s']//p";
     private static final String  TEST_CASE_STEP_VALUE = "//*[text()='%s']/parent::*//p";
-    private static final String  TEST_CASE_PROPERTIES_VALUE = "//*[@id='%s']";
+    private static final String  TEST_CASE_PROPERTIES_VALUE = "//*[contains(text(), '%s')]/parent::div//*[@role='combobox']";
 
     public TestCasePage isOpened() {
         EDIT_BUTTON.shouldBe(Condition.visible);
